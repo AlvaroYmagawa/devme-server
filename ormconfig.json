@@ -4,7 +4,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "docker",
-  "database": "gostack11_gobarber",
+  "database": "devme_server",
   "entities": [
     "./src/models/*.ts"
   ],

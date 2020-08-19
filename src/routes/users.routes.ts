@@ -3,8 +3,8 @@ import multer from 'multer';
 import uploadConfig from '../config/upload';
 
 // CUSTOM IMPORTS
-import UpdateUserAvararService from '../services/UpdateUserAvararService';
-import CreateUserService from '../services/CreateUserService';
+import UpdateUserAvararService from '../services/user/UpdateUserAvararService';
+import CreateUserService from '../services/user/CreateUserService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRoutes = Router();

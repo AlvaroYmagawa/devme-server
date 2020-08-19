@@ -4,31 +4,20 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 
-// CUSTOM IMPORTS
-import User from './Users';
-
 // '@' indicate that this JS field it has relation with DB
-
-@Entity('appointments')
-class Appointment {
+@Entity('technologies')
+class Technology {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   // By default an Colunm without params is a varchar
   @Column()
-  provider_id: string;
+  name: string;
 
-  @Column('timestamp with time zone')
-  date: Date;
-
-  // Relation between tables
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'provider_id' })
-  provider: User;
+  @Column()
+  type: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -37,4 +26,4 @@ class Appointment {
   updated_at: Date;
 }
 
-export default Appointment;
+export default Technology;

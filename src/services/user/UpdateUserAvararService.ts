@@ -3,9 +3,9 @@ import path from 'path';
 import fs from 'fs';
 
 // CUSTOM IMPORTS
-import User from '../models/Users';
-import uploadConfig from '../config/upload';
-import AppError from '../errors/AppError';
+import User from '../../models/Users';
+import uploadConfig from '../../config/upload';
+import AppError from '../../errors/AppError';
 
 interface Request {
   user_id: string;
