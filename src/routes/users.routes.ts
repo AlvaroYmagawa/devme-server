@@ -1,10 +1,13 @@
 import { Router } from 'express';
 import multer from 'multer';
+import { getRepository } from 'typeorm';
 import uploadConfig from '../config/upload';
 
 // CUSTOM IMPORTS
 import UpdateUserAvararService from '../services/user/UpdateUserAvararService';
 import CreateUserService from '../services/user/CreateUserService';
+import ShowUserService from '../services/user/ShowUserService';
+import User from '../models/Users';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRoutes = Router();
@@ -25,6 +28,24 @@ usersRoutes.post('/', async (request, response) => {
   delete user.password;
 
   return response.json(user);
+});
+
+usersRoutes.get('/:userId', async (request, response) => {
+  const { userId } = request.params;
+
+  const showUserService = new ShowUserService();
+
+  const user = await showUserService.execute({ userId });
+
+  return response.json(user);
+});
+
+usersRoutes.get('/', async (request, response) => {
+  const usersRepository = getRepository(User);
+
+  const users = await usersRepository.find();
+
+  return response.json(users);
 });
 
 // Patch is like PUT, but only change ONE field of table
